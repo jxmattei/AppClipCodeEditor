@@ -23,10 +23,7 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "AppClipCodeEditorTests",
-            dependencies: ["AppClipCodeEditor"],
-            resources: [
-                .process("Assets.xcassets")
-            ]
+            dependencies: ["AppClipCodeEditor"]
         ),
     ]
 )

@@ -14,6 +14,7 @@
 		99129F362A40D83B0097D66E /* AppClipCodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 99129F352A40D83B0097D66E /* AppClipCodeEditor */; };
 		99129F382A40D8490097D66E /* SVGWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99129F372A40D8490097D66E /* SVGWebView.swift */; };
 		99129F3A2A40D9500097D66E /* TestSVG.svg in Resources */ = {isa = PBXBuildFile; fileRef = 99129F392A40D9500097D66E /* TestSVG.svg */; };
+		99129F3C2A40FBBE0097D66E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99129F3B2A40FBBE0097D66E /* ContentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		99129F332A40D76A0097D66E /* AppClipCodeEditor */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AppClipCodeEditor; path = ..; sourceTree = "<group>"; };
 		99129F372A40D8490097D66E /* SVGWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGWebView.swift; sourceTree = "<group>"; };
 		99129F392A40D9500097D66E /* TestSVG.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestSVG.svg; sourceTree = "<group>"; };
+		99129F3B2A40FBBE0097D66E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				99129F242A40D74C0097D66E /* AppClipCodeEditorExampleApp.swift */,
 				99129F262A40D74C0097D66E /* ContentView.swift */,
 				99129F372A40D8490097D66E /* SVGWebView.swift */,
+				99129F3B2A40FBBE0097D66E /* ContentManager.swift */,
 				99129F282A40D74D0097D66E /* Assets.xcassets */,
 				99129F2A2A40D74D0097D66E /* Preview Content */,
 			);
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99129F382A40D8490097D66E /* SVGWebView.swift in Sources */,
+				99129F3C2A40FBBE0097D66E /* ContentManager.swift in Sources */,
 				99129F272A40D74C0097D66E /* ContentView.swift in Sources */,
 				99129F252A40D74C0097D66E /* AppClipCodeEditorExampleApp.swift in Sources */,
 			);
@@ -301,6 +305,7 @@
 				DEVELOPMENT_TEAM = 8673Q69NZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Needs Access to Store Photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,6 +335,7 @@
 				DEVELOPMENT_TEAM = 8673Q69NZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Needs Access to Store Photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

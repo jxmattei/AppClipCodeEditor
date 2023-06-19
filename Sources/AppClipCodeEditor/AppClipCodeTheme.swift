@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AppClipCodeTheme: String, CaseIterable {
+public enum AppClipCodeTheme: String, CaseIterable, Identifiable {
     case index0
     case index1
     case index2
@@ -26,6 +26,8 @@ public enum AppClipCodeTheme: String, CaseIterable {
     case index15
     case index16
     case index17
+
+    public var id: String { self.rawValue }
 
     public func replace(svg: String) -> String {
         var newSVG = svg

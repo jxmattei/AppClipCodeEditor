@@ -36,8 +36,6 @@ final class AppClipCodeEditorTests: XCTestCase {
         XCTAssertEqual(resultFileString, modifiedFileString)
     }
 
-
-
     func testIndex4() throws {
         let originalFileString = try getStringForFile("test0")
         let resultFileString = try getStringForFile("test4")
