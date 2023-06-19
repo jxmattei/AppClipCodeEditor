@@ -14,12 +14,12 @@ import Combine
 struct SVGWebView: UIViewRepresentable {
     typealias UIViewType = WKWebView
 
-    @Binding var svgText: String
-    var type: AppClipCodeTheme = .index4
+    var svgText: String
+    @Binding var type: AppClipCodeTheme
     var currentSVG: CurrentValueSubject<UIImage?,Never>
 
     func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView(frame: .init(origin: .zero, size: .init(width: 1024, height: 1024) ))
+        let webView = WKWebView(frame: .zero)
         let newSVG = type.replace(svg: svgText)
         webView.loadHTMLString(newSVG, baseURL: nil)
         webView.isOpaque = false
@@ -32,9 +32,8 @@ struct SVGWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        Task {
-            context.coordinator.generateImage()
-        }
+        let newSVG = type.replace(svg: svgText)
+        context.coordinator.webView.loadHTMLString(newSVG, baseURL: nil)
     }
 
     func makeCoordinator() -> Coordinator {
@@ -122,7 +121,7 @@ struct WebView_Previews: PreviewProvider {
         return String(data: data, encoding: .utf8)!
     }
     static var previews: some View {
-        SVGWebView(svgText: .constant(testSVGData), currentSVG: .init(nil))
+        SVGWebView(svgText: testSVGData, type: .constant(.index0), currentSVG: .init(nil))
             .frame(width: 250, height: 250, alignment: .center)
     }
 }

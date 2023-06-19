@@ -15,6 +15,7 @@
 		99129F382A40D8490097D66E /* SVGWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99129F372A40D8490097D66E /* SVGWebView.swift */; };
 		99129F3A2A40D9500097D66E /* TestSVG.svg in Resources */ = {isa = PBXBuildFile; fileRef = 99129F392A40D9500097D66E /* TestSVG.svg */; };
 		99129F3C2A40FBBE0097D66E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99129F3B2A40FBBE0097D66E /* ContentManager.swift */; };
+		99129F3F2A410C310097D66E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99129F3E2A410C310097D66E /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		99129F372A40D8490097D66E /* SVGWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGWebView.swift; sourceTree = "<group>"; };
 		99129F392A40D9500097D66E /* TestSVG.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestSVG.svg; sourceTree = "<group>"; };
 		99129F3B2A40FBBE0097D66E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		99129F3E2A410C310097D66E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		99129F232A40D74C0097D66E /* AppClipCodeEditorExample */ = {
 			isa = PBXGroup;
 			children = (
+				99129F3D2A410C2A0097D66E /* Utils */,
 				99129F242A40D74C0097D66E /* AppClipCodeEditorExampleApp.swift */,
 				99129F262A40D74C0097D66E /* ContentView.swift */,
 				99129F372A40D8490097D66E /* SVGWebView.swift */,
@@ -94,6 +97,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99129F3D2A410C2A0097D66E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				99129F3E2A410C310097D66E /* UIColorExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +183,7 @@
 			files = (
 				99129F382A40D8490097D66E /* SVGWebView.swift in Sources */,
 				99129F3C2A40FBBE0097D66E /* ContentManager.swift in Sources */,
+				99129F3F2A410C310097D66E /* UIColorExtension.swift in Sources */,
 				99129F272A40D74C0097D66E /* ContentView.swift in Sources */,
 				99129F252A40D74C0097D66E /* AppClipCodeEditorExampleApp.swift in Sources */,
 			);

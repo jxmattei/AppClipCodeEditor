@@ -63,19 +63,19 @@ public enum AppClipCodeTheme: String, CaseIterable, Identifiable {
         return newSVG
     }
 
-    var primaryColorHex:String {
+    public var primaryColorHex:String {
         return CodeElement.primary.hexColor(for: self)
     }
 
-    var secondaryColorHex: String {
+    public var secondaryColorHex: String {
         return CodeElement.secondary.hexColor(for: self)
     }
 
-    var circleColorHex: String {
+    public var circleColorHex: String {
         return CodeElement.circle.hexColor(for: self)
     }
 
-    var cameraColorHex: String {
+    public var cameraColorHex: String {
         return CodeElement.camera.hexColor(for: self)
     }
 
