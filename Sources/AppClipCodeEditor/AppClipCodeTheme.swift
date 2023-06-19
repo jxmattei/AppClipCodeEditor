@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AppClipCodeTheme: CaseIterable {
+public enum AppClipCodeTheme: String, CaseIterable {
     case index0
     case index1
     case index2
@@ -33,34 +33,49 @@ public enum AppClipCodeTheme: CaseIterable {
         //Circle
         newSVG = { () -> String in
             let regex = "<circle(.*)fill:#\\w+"
-            let toRegex = "<circle$1fill:\(CodeElement.circle.hexColor(for:self))"
+            let toRegex = "<circle$1fill:\(circleColorHex)"
             return newSVG.replacingOccurrences(of: regex, with: toRegex, options: [.regularExpression])
         }()
 
         //Primary
         newSVG = { () -> String in
             let regex = "<path(.*)data-color=\"0\"(.*)stroke:#\\w+"
-            let toRegex = "<path$1data-color=\"0\"$2stroke:\(CodeElement.primary.hexColor(for:self))"
+            let toRegex = "<path$1data-color=\"0\"$2stroke:\(primaryColorHex)"
             return newSVG.replacingOccurrences(of: regex, with: toRegex, options: [.regularExpression])
         }()
 
         //Secondary
         newSVG = { () -> String in
             let regex = "<path(.*)data-color=\"1\"(.*)stroke:#\\w+"
-            let toRegex = "<path$1data-color=\"1\"$2stroke:\(CodeElement.secondary.hexColor(for:self))"
+            let toRegex = "<path$1data-color=\"1\"$2stroke:\(secondaryColorHex)"
             return newSVG.replacingOccurrences(of: regex, with: toRegex, options: [.regularExpression])
         }()
 
         //Camera
         newSVG = { () -> String in
             let regex = "<path(.*)fill:#\\w+"
-            let toRegex = "<path$1fill:\(CodeElement.camera.hexColor(for:self))"
+            let toRegex = "<path$1fill:\(cameraColorHex)"
             return newSVG.replacingOccurrences(of: regex, with: toRegex, options: [.regularExpression])
         }()
 
         return newSVG
     }
 
+    var primaryColorHex:String {
+        return CodeElement.primary.hexColor(for: self)
+    }
+
+    var secondaryColorHex: String {
+        return CodeElement.secondary.hexColor(for: self)
+    }
+
+    var circleColorHex: String {
+        return CodeElement.circle.hexColor(for: self)
+    }
+
+    var cameraColorHex: String {
+        return CodeElement.camera.hexColor(for: self)
+    }
 
     public enum CodeElement {
         case circle
