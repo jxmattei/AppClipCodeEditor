@@ -19,6 +19,7 @@ struct ContentView: View {
 
     @StateObject var manager: ContentManager = .init()
     @State var type: AppClipCodeTheme = .index0
+    @State var screenshotSize: CGFloat = 1024
 
 
     let columns = [
@@ -52,7 +53,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(height: 100)
-                SVGWebView(svgText: ContentView.testSVGData, type: $type, currentSVG: manager.currentSVG)
+                SVGWebView(svgText: ContentView.testSVGData, type: $type, screenshotSize: $screenshotSize, currentSVG: manager.currentSVG)
                     .toolbar {
                         ToolbarItem(placement: .automatic) {
                             Button("Save Image") {

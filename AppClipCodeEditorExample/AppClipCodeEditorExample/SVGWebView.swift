@@ -16,12 +16,14 @@ struct SVGWebView: UIViewRepresentable {
 
     var svgText: String
     @Binding var type: AppClipCodeTheme
+    @Binding var screenshotSize: CGFloat
     var currentSVG: CurrentValueSubject<UIImage?,Never>
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView(frame: .zero)
         let newSVG = type.replace(svg: svgText)
         webView.loadHTMLString(newSVG, baseURL: nil)
+        context.coordinator.screenshotWebView = context.coordinator.createScreenshotWebView()
         webView.isOpaque = false
         webView.backgroundColor = UIColor.clear
         webView.scrollView.backgroundColor = .clear
@@ -32,38 +34,40 @@ struct SVGWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        let newSVG = type.replace(svg: svgText)
-        context.coordinator.webView.loadHTMLString(newSVG, baseURL: nil)
+        context.coordinator.type = type
+        context.coordinator.screenshotSize = screenshotSize
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(svgText: self.svgText, type: self.type, currentSVG: self.currentSVG)
+        return Coordinator(svgText: self.svgText, type: self.type, screenshotSize: screenshotSize, currentSVG: self.currentSVG)
     }
 
     class Coordinator: NSObject, WKNavigationDelegate {
 
-        var webView: WKWebView! {
-            didSet {
-            }
-        }
-        lazy var screenshotWebView : WKWebView = {
-            let webView = createWebView()
-            webView.navigationDelegate = self
-            return webView
-        }()
+        var webView: WKWebView!
+        var screenshotWebView : WKWebView!
 
         var svgText: String
-        var type: AppClipCodeTheme
+        var screenshotSize: CGFloat
+        var type: AppClipCodeTheme {
+            didSet {
+                let newSVG = type.replace(svg: svgText)
+                webView.loadHTMLString(newSVG, baseURL: nil)
+                screenshotWebView = createScreenshotWebView()
+            }
+        }
 
         var currentSVG: CurrentValueSubject<UIImage?,Never>
 
 
         init(svgText: String,
              type: AppClipCodeTheme,
+             screenshotSize: CGFloat,
              currentSVG: CurrentValueSubject<UIImage?,Never>) {
             self.currentSVG = currentSVG
             self.svgText = svgText
             self.type = type
+            self.screenshotSize = screenshotSize
             super.init()
             _ = screenshotWebView
         }
@@ -82,13 +86,12 @@ struct SVGWebView: UIViewRepresentable {
                 let image =  try await
                 screenshotWebView.takeSnapshot(configuration: nil)
                 currentSVG.send(image)
-
             }
         }
 
-        func createWebView() -> WKWebView {
+        func createScreenshotWebView() -> WKWebView {
             let scale = UIScreen.main.scale
-            let webView = WKWebView(frame: .init(origin: .zero, size: .init(width: 2048/scale, height: 2048/scale)))
+            let webView = WKWebView(frame: .init(origin: .zero, size: .init(width: screenshotSize/scale, height: screenshotSize/scale)))
             let newSVG = type.replace(svg: svgText)
             webView.loadHTMLString(newSVG, baseURL: nil)
             webView.isOpaque = false
@@ -96,6 +99,7 @@ struct SVGWebView: UIViewRepresentable {
             webView.scrollView.backgroundColor = .clear
             webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             webView.scrollView.isScrollEnabled = false
+            webView.navigationDelegate = self
             return webView
         }
     }
@@ -121,7 +125,7 @@ struct WebView_Previews: PreviewProvider {
         return String(data: data, encoding: .utf8)!
     }
     static var previews: some View {
-        SVGWebView(svgText: testSVGData, type: .constant(.index0), currentSVG: .init(nil))
+        SVGWebView(svgText: testSVGData, type: .constant(.index0), screenshotSize: .constant(1024.0), currentSVG: .init(nil))
             .frame(width: 250, height: 250, alignment: .center)
     }
 }
